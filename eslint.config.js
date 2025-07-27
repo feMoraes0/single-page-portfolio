@@ -9,7 +9,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 export default tseslint.config([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx}', '!**/coverage/*.{ts|js}'],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
