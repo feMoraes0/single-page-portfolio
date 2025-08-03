@@ -73,7 +73,7 @@ const Slider = () => {
       </h4>
       <div
         ref={mainComponent}
-        className="mt-10 w-full relative flex overflow-x-auto snap-x gap-5 md:mt-12"
+        className="mt-10 w-full relative flex overflow-x-auto snap-x gap-5 md:mt-12 lg:gap-8 lg:justify-center"
       >
         {elements.map(({ image, id }) => {
           return (
