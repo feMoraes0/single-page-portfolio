@@ -7,6 +7,7 @@ const Header = () => {
       <a
         target="_blank"
         href="https://linkedin.com/"
+        rel="noopener noreferrer"
         className="rounded-full bg-[#030303] text-[#FFF7F0] px-6 pt-3 pb-4 text-[16px] leading-[150%] md:py-4 md:px-12"
       >
         Free consultation
