@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import App from '../../src/pages/App';
 
 describe('Given the App page, when is rendered', () => {
-  window.HTMLElement.prototype.scrollIntoView = function () {};
+  window.HTMLElement.prototype.scrollBy = function () {};
 
   it('And introduction section is validated, then should find texts with expected contents', () => {
     const { getByTestId } = render(<App />);

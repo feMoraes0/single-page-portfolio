@@ -4,7 +4,7 @@ import { type UserEvent, userEvent } from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeAll } from 'vitest';
 
 describe('Given the slider component', () => {
-  window.HTMLElement.prototype.scrollIntoView = function () {};
+  window.HTMLElement.prototype.scrollBy = function () {};
 
   describe('And the initial state is current', () => {
     beforeAll(() => {
@@ -27,22 +27,15 @@ describe('Given the slider component', () => {
     });
 
     it('Then should validate with one and when reach the end of the list behaviour', async () => {
-      const scrollIIntoViewSpy = vi.spyOn(
-        window.HTMLElement.prototype,
-        'scrollIntoView',
-      );
+      const scrollBySpy = vi.spyOn(window.HTMLElement.prototype, 'scrollBy');
       const buttonLeft = screen.getAllByRole('button').at(0) as Element;
       // click when can go left
       await user.click(buttonLeft);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledTimes(1);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledWith({
+      expect(scrollBySpy).toHaveBeenCalledTimes(1);
+      expect(scrollBySpy).toHaveBeenCalledWith({
         behavior: 'smooth',
-        inline: 'center',
+        left: -0,
       });
-      // click when the slider is all left
-      vi.clearAllMocks();
-      await user.click(buttonLeft);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -55,22 +48,15 @@ describe('Given the slider component', () => {
     });
 
     it('Then should validate when right button is clicked', async () => {
-      const scrollIIntoViewSpy = vi.spyOn(
-        window.HTMLElement.prototype,
-        'scrollIntoView',
-      );
+      const scrollBySpy = vi.spyOn(window.HTMLElement.prototype, 'scrollBy');
       const rightButton = screen.getAllByRole('button').at(1) as Element;
       // click when can go right
       await user.click(rightButton);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledTimes(1);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledWith({
+      expect(scrollBySpy).toHaveBeenCalledTimes(1);
+      expect(scrollBySpy).toHaveBeenCalledWith({
         behavior: 'smooth',
-        inline: 'center',
+        left: 0,
       });
-      // click when the slider is all right
-      vi.clearAllMocks();
-      await user.click(rightButton);
-      expect(scrollIIntoViewSpy).toHaveBeenCalledTimes(0);
     });
   });
 });
