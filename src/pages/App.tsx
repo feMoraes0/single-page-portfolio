@@ -7,9 +7,12 @@ import Contact from '../components/Contact';
 
 function App() {
   return (
-    <main className="pt-6 bg-[#FFF7F0] min-h-lvh">
+    <main className="py-6 bg-[#FFF7F0] min-h-lvh md:pb-10 lg:pt-8 lg:pb-16">
       <Header />
-      <section className="mx-4 mt-10 md:mx-8 md:mt-[64px] flex flex-col items-center">
+      <section
+        data-testid="introduction-section"
+        className="mx-4 mt-10 md:mx-8 md:mt-[64px] flex flex-col items-center"
+      >
         <h1 className="font-bold text-center text-[40px] leading-[120%] tracking-normal md:text-[56px] md:leading-[130%] text-[#030303] md:mx-[83px]">
           Design solutions made easy
         </h1>
@@ -19,7 +22,10 @@ function App() {
         </p>
       </section>
       <Grid />
-      <section className="flex flex-col items-center mt-16 px-4 md:mt-20 lg:flex-row lg:items-center lg:px-[165px]">
+      <section
+        data-testid="profile-section"
+        className="flex flex-col items-center mt-16 px-4 md:mt-20 lg:flex-row lg:items-center lg:px-[165px]"
+      >
         <img
           src={ProfileImage}
           alt="profile"
