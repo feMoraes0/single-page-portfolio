@@ -1,17 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Arrow from '../assets/arrow.svg';
 import WorkImages from '../assets/works';
 
 type ComponentDefinition = {
-  children: Array<{
-    scrollIntoView: ({
-      inline,
-      behavior,
-    }: {
-      inline: string;
-      behavior: string;
-    }) => null;
-  }>;
+  scrollBy: ({
+    left,
+    behavior,
+  }: {
+    left: number;
+    behavior: 'smooth' | 'auto';
+  }) => null;
 } | null;
 
 const elements = [
@@ -31,39 +29,17 @@ const elements = [
 
 const Slider = () => {
   const mainComponent = useRef(null);
-  const [, setCurrentElementIndex] = useState(1);
 
-  const goLeft = () => {
-    setCurrentElementIndex((prev) => {
-      if (prev > 0) {
-        move(prev - 1);
-        return prev - 1;
-      }
-      return prev;
+  const move = (direction: 'left' | 'right') => {
+    const cardWidth = document.querySelector('article')!.offsetWidth;
+    (mainComponent.current as ComponentDefinition)?.scrollBy({
+      left: cardWidth * (direction === 'right' ? 1 : -1),
+      behavior: 'smooth',
     });
-  };
-
-  const goRight = () => {
-    setCurrentElementIndex((prev) => {
-      if (prev + 1 <= elements.length - 1) {
-        move(prev + 1);
-        return prev + 1;
-      }
-      return prev;
-    });
-  };
-
-  const move = (to: number) => {
-    (mainComponent.current as ComponentDefinition)?.children[to].scrollIntoView(
-      {
-        inline: 'center',
-        behavior: 'smooth',
-      },
-    );
   };
 
   useEffect(() => {
-    move(1);
+    move('right');
   }, []);
 
   return (
@@ -89,13 +65,13 @@ const Slider = () => {
       </div>
       <div className="mt-10 flex flex-row items-center gap-4 md:mt-12">
         <button
-          onClick={goLeft}
+          onClick={() => move('left')}
           className="rounded-full bg-[#030303] w-12 h-12 flex items-center justify-center"
         >
           <img src={Arrow} alt="arrow left" className="w-[14.61px] h-4" />
         </button>
         <button
-          onClick={goRight}
+          onClick={() => move('right')}
           className="rounded-full bg-[#030303] w-12 h-12 flex items-center justify-center"
         >
           <img
