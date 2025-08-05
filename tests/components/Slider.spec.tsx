@@ -6,6 +6,12 @@ import { describe, it, expect, vi, beforeAll } from 'vitest';
 describe('Given the slider component', () => {
   window.HTMLElement.prototype.scrollBy = function () {};
 
+  it('Then should validate slider div accessibility properties', () => {
+    const { getByLabelText } = render(<Slider />);
+    const container = getByLabelText('Scrollable content carousel');
+    expect(container).toHaveProperty('tabIndex', 0);
+  });
+
   describe('And the initial state is current', () => {
     beforeAll(() => {
       render(<Slider />);
