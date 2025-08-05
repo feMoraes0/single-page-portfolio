@@ -50,6 +50,8 @@ const Slider = () => {
       <div
         ref={mainComponent}
         className="mt-10 w-full relative flex overflow-x-auto snap-x gap-5 md:mt-12 lg:gap-8 lg:justify-center"
+        tabIndex={0}
+        aria-label="Scrollable content carousel"
       >
         {elements.map(({ image, id }) => {
           return (
