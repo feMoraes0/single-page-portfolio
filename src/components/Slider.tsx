@@ -44,9 +44,9 @@ const Slider = () => {
 
   return (
     <section className="mt-16 flex flex-col items-center md:mt-20  lg:mt-[120px]">
-      <h4 className="text-[40px] leading-[130%] tracking-normal font-bold">
+      <h3 className="text-[40px] leading-[130%] tracking-normal font-bold">
         My Work
-      </h4>
+      </h3>
       <div
         ref={mainComponent}
         className="mt-10 w-full relative flex overflow-x-auto snap-x gap-5 md:mt-12 lg:gap-8 lg:justify-center"
