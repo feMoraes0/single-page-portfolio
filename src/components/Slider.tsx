@@ -67,18 +67,20 @@ const Slider = () => {
       </div>
       <div className="mt-10 flex flex-row items-center gap-4 md:mt-12">
         <button
+          type="button"
           onClick={() => move('left')}
           className="rounded-full bg-[#030303] w-12 h-12 flex items-center justify-center"
         >
           <img src={Arrow} alt="arrow left" className="w-[14.61px] h-4" />
         </button>
         <button
+          type="button"
           onClick={() => move('right')}
           className="rounded-full bg-[#030303] w-12 h-12 flex items-center justify-center"
         >
           <img
             src={Arrow}
-            alt="arrow left"
+            alt="arrow right"
             className="w-[14.61px] h-4 rotate-180"
           />
         </button>
